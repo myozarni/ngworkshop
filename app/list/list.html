@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-xs-6">
+        <div class="form">
+            <input type="text" ng-model="list.searchTerm.name" placeholder="Search by name" class="form-control"/>
+            <br/>
+            <input type="text" ng-model="list.searchTerm.rank" placeholder="Search by rank" class="form-control"/>
+            <br/>
+            <input type="text" ng-model="list.searchTerm.playingTime" placeholder="Search by playing time" class="form-control"/>
+        </div>
+    </div>
+</div>
+<br/>
+
+<p>
+    <em>Click in table header to sort</em>
+</p>
+
+<table class="table table-responsive">
+    <thead>
+    <tr>
+        <th ng-click="list.sortBy('name')">
+            Name
+        </th>
+        <th ng-click="list.sortBy('rank')">
+            Rank
+        </th>
+        <th ng-click="list.sortBy('playingTime')">
+            Playing Time
+        </th>
+        <th ng-click="list.sortBy('yearPublished')">
+            Year Published
+        </th>
+        <th>
+            Image
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ui-sref="detail({id:game.gameId})"
+        ng-repeat="game in list.games | filter:list.searchTerm | orderBy : list.orderSelection">
+        <td>
+            {{game.name}}
+        </td>
+        <td>
+            {{game.rank}}
+        </td>
+        <td>
+            {{game.playingTime}}
+        </td>
+        <td>
+            {{game.yearPublished}}
+        </td>
+        <td>
+            <img ng-src="{{list.getThumbnailUrl(game)}}" />
+        </td>
+    </tr>
+    </tbody>
+</table>

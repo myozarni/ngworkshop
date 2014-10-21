@@ -1,0 +1,21 @@
+<div>
+    <a ui-sref="list"><- all games</a>
+</div>
+    <h3>Selected Game : {{detail.selectedGame.name}}</h3>
+    <div class="row">
+        <div class="col-xs-3">
+            <container>
+            <card image-url="{{detail.getImageUrl(detail.selectedGame)}}" message="{{detail.selectedGame.yearPublished}}" game="detail.selectedGame" update-favourite="detail.whatever()"></card>
+            </container>
+            {{detail.selectedGame.name}}
+        </div>
+        <div class="col-xs-3">
+            {{detail.selectedGame.rank}}
+        </div>
+        <div class="col-xs-3">
+            {{detail.selectedGame.yearPublished}}
+        </div>
+        <div class="col-xs-3">
+            <!--<img ng-src="{{detail.getImageUrl(detail.selectedGame)}}"  class="img-responsive" title="{{detail.selectedGame.name}}"/>-->
+        </div>
+    </div>
